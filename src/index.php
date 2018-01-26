@@ -1,5 +1,5 @@
 <?php
-     $arr = array(1,2,3,4);
+     $arr = array(1,2,3);
      foreach ($arr as $value){
           result.=value;
      }
