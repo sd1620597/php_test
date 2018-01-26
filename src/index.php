@@ -1,7 +1,7 @@
-<php
-     $arr = array("a", "b", "c");
-     foreach($arr as $value){
-        result.=$value
+<?php
+     $arr = array(1,2,3);
+     foreach ($arr as $value){
+          result.=value;
      }
-     var_dump(result);
+     echo result;
 ?>

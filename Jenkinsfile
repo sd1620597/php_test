@@ -56,6 +56,7 @@ pipeline{
             }
             steps {
                 echo "部署测试环境中……"
+                sh "ansible-playbook Playbook.yml"
             }
         }
         

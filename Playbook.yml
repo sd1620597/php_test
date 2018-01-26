@@ -1,5 +1,6 @@
 ---
 - hosts: 47.100.213.242
+  remote_user: root
   tasks:
     - name: deploy remote server
       copy: src=./src/ dest=/opt/web/
