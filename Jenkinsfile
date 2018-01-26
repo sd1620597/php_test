@@ -14,10 +14,10 @@ pipeline{
                     }
                     steps {
                         script {
-                            sonar_home = tool 'sonar_scanner'
+                            def sonar_home = tool 'sonar_scanner'
                         }
                         withSonarQubeEnv('sonar_service') {
-                            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey='${JOB_NAME%%/*}' -Dsonar.sources=./src"
+                            sh '${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME%%/*} -Dsonar.sources=./src'
                         }
                     }
                 }
