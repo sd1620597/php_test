@@ -17,7 +17,7 @@ pipeline{
                             sonar_home = tool 'sonar_scanner'
                         }
                         withSonarQubeEnv('sonar_service') {
-                            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey="'"echo ${JOB_NAME}|awk -F '/' '{print $1}'"'" -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
+                            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=`echo ${JOB_NAME}|awk -F '/' '{print $1}'` -Dsonar.sources=./src -Dsonar.java.binaries=WebContent/WEB-INF/lib"
                         }
                     }
                 }
