@@ -15,11 +15,10 @@ pipeline{
                     steps {
                         script {
                             sonar_home = tool 'sonar_scanner'
-                            project_name='${JOB_NAME%%/*}'
+                            project_name='${JOB_NAME%%/*}'-'${JOB_BASE_NAME}'
                         }
                         withSonarQubeEnv('sonar_service') {
-                            //sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${project_name} -Dsonar.sources=./src"
-                            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${GIT_BRANCH} -Dsonar.sources=./src"
+                            sh "${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${project_name} -Dsonar.sources=./src"
                             //sh '${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME%%/*} -Dsonar.sources=./src'
                         }
                     }
