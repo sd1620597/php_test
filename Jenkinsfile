@@ -5,16 +5,6 @@ pipeline{
         string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
     }
     stages {
-        stage("Git Checkout") {
-            agent any
-            steps {
-                checkout scm: [$class: 'GitSCM', branches: [[name: "$GIT_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-                    userRemoteConfigs: [[url: 'https://github.com/sd1620597/php_test.git'],
-                        [credentialsId: 'gitlab_global_readonly_sshkey']
-                    ]
-                ], changelog: false, poll: false
-            }
-        }
         stage('代码构建'){
             parallel {
                 stage('SonarQube扫描') {
