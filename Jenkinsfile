@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools {
+        "SonarQube Scanner" 'sonar_scanner'
+    }
     parameters {
         choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
         string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
@@ -16,9 +19,6 @@ pipeline{
                         //script {
                         //    sonar_home = tool 'sonar_scanner'
                         //}
-                        tools {
-                            "SonarQube Scanner" 'sonar_scanner'
-                        }
                         withSonarQubeEnv('sonar_service') {
                             //sh '${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME%%/*} -Dsonar.sources=./src'
                             sh "sonar-scanner -Dsonar.projectKey=TEST -Dsonar.sources=./src"
