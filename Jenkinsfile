@@ -2,7 +2,7 @@ pipeline{
     agent any
     parameters {
         choice(name: 'DO_SONNAR',choices:'yes\nno', description: '是否允许Sonar-Scanner?')
-        string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
+        //string(name: 'GIT_BRANCH', defaultValue: 'dev', description: '请输入需要构建的分支')
     }
     stages {
         stage('代码构建'){
