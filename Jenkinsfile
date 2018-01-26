@@ -17,7 +17,9 @@ pipeline{
                             sonar_home = tool 'sonar_scanner'
                         }
                         withSonarQubeEnv('sonar_service') {
-                            sh '$sonar_home/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME%%/*} -Dsonar.sources=./src'
+                            def project_name=${JOB_NAME%%/*}
+                            sh '${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${project_name} -Dsonar.sources=./src'
+                            //sh '${sonar_home}/bin/sonar-scanner -Dsonar.projectKey=${JOB_NAME%%/*} -Dsonar.sources=./src'
                         }
                     }
                 }
